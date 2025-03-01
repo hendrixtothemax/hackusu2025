@@ -34,7 +34,6 @@ for turn in range(0,maxTurns):
             charBgColor = Back.YELLOW
             if guesscharacter.upper() == word[i].upper():
                 charBgColor = Back.GREEN
-                #print(f'{Fore.RED} Correct Position {guesscharacter} == {word[i]}')
 
         if guesscharacter != " ":
             chars += f'{charColor}{charBgColor}{guesscharacter}{Back.RESET}{Fore.RESET}'
