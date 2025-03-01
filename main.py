@@ -19,22 +19,23 @@ five_letter_words = [
     "shaky", "toner", "taste", "union", "vood", "whale", "xaxis", "yobbe", "zeroed"
 ]
 
+# choose a random word from the word list
 word_index = random.randrange (0, len(five_letter_words) -1)
-
 word = five_letter_words[word_index]
 
+# magic values
 message = "Try and guess today's wordle: "
 guesses = []
 
-#checking if any of the letters are in the correct word
+# running a turn of wordle
 for turn in range(0,maxTurns):
     chars=""
-
     print(f'{message}', end="")
     userguess = input()
     userguess = userguess.upper()
     print(f'\r', end="")
 
+    #make sure user input is valid (only 5 characters)
     while len(userguess) != 5:
         if len(userguess) < 5:
             print('You need to guess a 5 character word.')
@@ -49,21 +50,28 @@ for turn in range(0,maxTurns):
         charColor = Fore.WHITE
         charBgColor = Back.RESET
 
+        # if the character is in the word
         if guesscharacter.upper() in word.upper():
             charBgColor = Back.YELLOW
+
+            # if the character is in the correct spot
             if guesscharacter.upper() == word[i].upper():
                 charBgColor = Back.GREEN
 
+        # make sure the character is not a space character
         if guesscharacter != " ":
             chars += f'{charColor}{charBgColor}{guesscharacter}{Back.RESET}{Fore.RESET}'
     guesses.append(chars)
 
+    # print out all the user's guesses
     print('\n--------------------')
     for j,guess in enumerate(guesses):
-        print(f'{guess}')
+        print(f'[{j+1}] {guess}')
     print(f'{Back.RESET}{Fore.RESET}', end="")
     print(f'--------------------{Back.RESET}{Fore.RESET}')
     message = ""
+
+    # check if the user has guessed the correct word
     if userguess.upper() == word.upper():
         break
 
