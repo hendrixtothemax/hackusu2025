@@ -10,10 +10,20 @@ guesses = []
 #checking if any of the letters are in the correct word
 for turn in range(0,maxTurns):
     chars=""
+
     print(f'{message}', end="")
     userguess = input()
     userguess = userguess.upper()
     print(f'\r', end="")
+
+    while len(userguess) != 5:
+        if len(userguess) < 5:
+            print('You need to guess a 5 character word.')
+            userguess = input ('Take a guess:')
+
+        elif len(userguess) > 5:
+            print('You can only guess a 5 character word.')
+            userguess = input ('Take a guess:')
     
     #changing color based on userguess
     for i,guesscharacter in enumerate(userguess):
@@ -27,7 +37,7 @@ for turn in range(0,maxTurns):
                 #print(f'{Fore.RED} Correct Position {guesscharacter} == {word[i]}')
 
         if guesscharacter != " ":
-            chars += f'{charColor}{charBgColor}{guesscharacter}'
+            chars += f'{charColor}{charBgColor}{guesscharacter}{Back.RESET}{Fore.RESET}'
     guesses.append(chars)
 
     print('\n--------------------')
@@ -43,3 +53,4 @@ if userguess.upper() == word.upper():
     print("You guessed the word! Good Job!")
 else:
     print(f"You failed to guess the word! The word was {word}!")
+print()
