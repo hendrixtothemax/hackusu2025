@@ -1,9 +1,28 @@
+#adding colorama
 from colorama import Fore, Back
+import random
 
-
+#setting up correct word for user to guess
 print('Welcome to Wordle!')
+
+#declaring the max amount of guesses a user gets
 maxTurns = 6
-word = 'KIRBY'
+
+five_letter_words = [
+    "apple", "beach", "chair", "dance", "eagle", "fancy", "glove", "haste", "input", "jolly",
+    "knife", "liver", "mango", "night", "open", "pearl", "quizy", "rosey", "stare", "touch",
+    "under", "vigor", "waste", "xenon", "yearn", "zesty", "brave", "clash", "dealt", "echoes",
+    "flame", "gloom", "hatch", "impose", "jumpy", "lapse", "meant", "neckl", "opted", "pines",
+    "quest", "relic", "saltz", "tiger", "upset", "vigor", "wound", "xotic", "yawns", "zebra",
+    "acorn", "blush", "candy", "dingo", "elite", "fancy", "gear", "hype", "hopes", "inlay", 
+    "juice", "klutz", "latch", "myths", "note", "oiled", "packy", "quiz", "rubin", "swoon", 
+    "shaky", "toner", "taste", "union", "vood", "whale", "xaxis", "yobbe", "zeroed"
+]
+
+word_index = random.randrange (0, len(five_letter_words) -1)
+
+word = five_letter_words[word_index]
+
 message = "Try and guess today's wordle: "
 guesses = []
 
